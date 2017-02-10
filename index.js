@@ -8,7 +8,6 @@ const RemoveSourceMapURLWebpackPlugin = function(opts) {
   this.options.test = this.options.test || /\.js($|\?)/i; 
 };
 
-
 RemoveSourceMapURLWebpackPlugin.prototype.testKey = function (key) {
   if(this.options.test instanceof RegExp) {
     return this.options.test.test(key);

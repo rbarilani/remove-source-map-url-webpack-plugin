@@ -4,7 +4,6 @@ Remove Source Map Url Webpack Plugin
 This is a webpack plugin that removes `# sourceMappingURL` after compilation.<br>
 It's a quick fix for wrong `# sourceMappingURL` comments left in vendor source code when compiling without minification (causing 404 responses from the server).
 
-<br>
 
 Maintainer: Ruben Barilani
 
