@@ -1,0 +1,26 @@
+{
+  "name": "@rbarilani/remove-source-map-url-webpack-plugin",
+  "version": "0.1.0-alpha",
+  "description": "Remove source map url comments ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:rbarilani/remove-source-map-url-webpack-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "source-map-url"
+  ],
+  "author": "Ruben Barilani <ruben.barilani.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rbarilani/remove-source-map-url-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/rbarilani/remove-source-map-url-webpack-plugin#readme",
+  "dependencies": {
+    "colors": "^1.1.2"
+  }
+}

@@ -1,0 +1,36 @@
+# /.editorconfig
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# editorconfig.org
+
+root = true
+[*]
+
+indent_style = space
+indent_size = 4
+
+# We recommend you to keep these unchanged
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
+
+# HTML
+[*.html]
+indent_size = 4
+
+# Css
+[*.css]
+indent_size = 2
+
+# Sass
+[*.scss]
+indent_size = 2
+
+# Less
+[*.less]
+indent_size = 2
