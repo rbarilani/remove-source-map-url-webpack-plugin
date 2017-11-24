@@ -27,9 +27,9 @@ var webpackConfig = {
     filename: 'index_bundle.js'
   },
   plugins: [
-  	new RemoveSourceMapUrlWebpackPlugin({
-       test: /index_bundle\.js$/
-  	})
+    new RemoveSourceMapUrlWebpackPlugin({
+      test: /index_bundle\.js$/
+    })
   ]
 };
 ```
