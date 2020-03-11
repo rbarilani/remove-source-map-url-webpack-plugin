@@ -32,7 +32,7 @@ RemoveSourceMapURLWebpackPlugin.prototype.onAfterCompile = function(compilation,
   .forEach((key) => {
     countMatchAssets += 1;
     let asset = compilation.assets[key];
-    let source = asset.source().replace(/# sourceMappingURL=(.*\.map)/g, '# $1');
+    let source = asset.source().replace(/# sourceMappingURL=(.+?\.map)/g, '# $1');
     compilation.assets[key] = Object.assign(asset, {
       source: function () { return source }
     });
