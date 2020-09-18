@@ -37,7 +37,11 @@ RemoveSourceMapURLWebpackPlugin.prototype.onAfterCompile = function(compilation,
       source: function () { return source }
     });
   });
-  console.log(colors.green(`remove-source-map-url: ${countMatchAssets} asset(s) processed`));
+
+  if (countMatchAssets) {
+    console.log(colors.green(`remove-source-map-url: ${countMatchAssets} asset(s) processed`));
+  }
+
   cb();
 };
 
