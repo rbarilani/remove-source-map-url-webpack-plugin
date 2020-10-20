@@ -12,6 +12,10 @@
 #  https://help.github.com/articles/ignoring-files
 #
 
+# -- Project -- #
+test/mock-project/dist
+
+
 # -- Bower -- #
 *bower_components
 
