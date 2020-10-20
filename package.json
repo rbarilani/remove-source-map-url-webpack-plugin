@@ -4,7 +4,9 @@
   "description": "Remove source map url comments webpack plugin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava test/**/*.test.js",
+    "test:build": "webpack --config test/mock-project/webpack.config.js",
+    "format": "prettier '**/*.js' --write"
   },
   "repository": {
     "type": "git",
@@ -22,5 +24,11 @@
   "homepage": "https://github.com/rbarilani/remove-source-map-url-webpack-plugin#readme",
   "dependencies": {
     "colors": "^1.1.2"
+  },
+  "devDependencies": {
+    "ava": "^3.13.0",
+    "prettier": "^2.1.2",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.1.0"
   }
 }

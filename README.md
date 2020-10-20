@@ -39,9 +39,17 @@ var webpackConfig = {
 * `test`: A condition that must be met. A condition may be a RegExp (tested against absolute asset key), a string containing the key, a function(key): bool.<br>
 *(default: `/\.js($|\?)/i`)*
 
-## Contribution
+## Contributing
 
 You're free to contribute to this project by submitting issues and/or pull requests.
+
+## Development
+
+### NPM scripts
+
+* `npm test`: run test suite
+* `npm run test:build`: build the mock project with webpack-cli
+* `npm run format`: format code following project conventions
 
 ## License
 
