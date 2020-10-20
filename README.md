@@ -7,6 +7,8 @@ It's a quick fix for wrong `# sourceMappingURL` comments left in vendor source c
 
 Maintainer: Ruben Barilani
 
+[![Build Status](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin.svg?branch=master)](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin)
+
 
 ## Install 
 
