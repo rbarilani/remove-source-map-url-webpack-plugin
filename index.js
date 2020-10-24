@@ -1,5 +1,6 @@
 "use strict";
 
+const { sources, Compilation } = require("webpack");
 const colors = require("colors/safe");
 
 const RemoveSourceMapURLWebpackPlugin = function (opts) {
@@ -7,17 +8,17 @@ const RemoveSourceMapURLWebpackPlugin = function (opts) {
   this.options.test = this.options.test || /\.js($|\?)/i;
 };
 
-RemoveSourceMapURLWebpackPlugin.prototype.testKey = function (key) {
+RemoveSourceMapURLWebpackPlugin.prototype.testFile = function (file) {
   if (this.options.test instanceof RegExp) {
-    return this.options.test.test(key);
+    return this.options.test.test(file);
   }
 
   if (typeof this.options.test === "string") {
-    return this.options.test === key;
+    return this.options.test === file;
   }
 
   if (typeof this.options.test === "function") {
-    return this.options.test(key);
+    return this.options.test(file);
   }
 
   throw new Error(
@@ -25,41 +26,49 @@ RemoveSourceMapURLWebpackPlugin.prototype.testKey = function (key) {
   );
 };
 
-RemoveSourceMapURLWebpackPlugin.prototype.onAfterCompile = function (
-  compilation,
-  cb
-) {
-  let countMatchAssets = 0;
-  Object.keys(compilation.assets)
-    .filter((key) => {
-      return this.testKey(key);
-    })
-    .forEach((key) => {
-      countMatchAssets += 1;
-      let asset = compilation.assets[key];
-      let source = asset
+RemoveSourceMapURLWebpackPlugin.prototype.processAssets = function (assets) {
+  return Object.keys(assets)
+    .filter((file) => this.testFile(file))
+    .map((file) => {
+      const asset = assets[file];
+      const source = asset
         .source()
         .replace(/# sourceMappingURL=(.+?\.map)/g, "# $1");
-      compilation.assets[key] = Object.assign(asset, {
-        source: function () {
-          return source;
-        },
-      });
+
+      return {
+        file,
+        source: new sources.RawSource(source),
+      };
     });
-
-  if (countMatchAssets) {
-    console.log(
-      colors.green(
-        `remove-source-map-url: ${countMatchAssets} asset(s) processed`
-      )
-    );
-  }
-
-  cb();
 };
 
 RemoveSourceMapURLWebpackPlugin.prototype.apply = function (compiler) {
-  compiler.plugin("after-compile", this.onAfterCompile.bind(this));
+  compiler.hooks.compilation.tap("after-compile", (compilation) => {
+    compilation.hooks.processAssets.tap(
+      {
+        name: "RemoveSourceMapURLWebpackPlugin",
+        stage: Compilation.PROCESS_ASSETS_STAGE_DERIVED,
+      },
+      (assets) => {
+        // process assets
+        const count = this.processAssets(assets).reduce(
+          (count, { file, source }) => {
+            // update asset for the current compilation
+            compilation.updateAsset(file, source);
+            return count + 1;
+          },
+          0
+        );
+        console.log(
+          colors.green(
+            `remove-source-map-url: ${count}/${
+              Object.keys(assets).length
+            } asset(s) processed and updated`
+          )
+        );
+      }
+    );
+  });
 };
 
 module.exports = RemoveSourceMapURLWebpackPlugin;
