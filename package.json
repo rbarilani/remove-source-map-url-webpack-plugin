@@ -7,7 +7,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:build": "webpack --config test/mock-project/webpack.config.js",
-    "format": "prettier '**/*.js' --write"
+    "format": "prettier '**/*.js' --write",
+    "coveralls": "coveralls < coverage/lcov.info"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "colors": "^1.1.2"
   },
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "jest": "^26.6.1",
     "prettier": "^2.1.2",
     "webpack": "^5.2.0",

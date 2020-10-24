@@ -5,6 +5,7 @@ Remove Source Map Url Webpack Plugin
 [![Build Status](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin.svg?branch=master)](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin)
 [![dependencies Status](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin/status.svg)](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin)
 [![devDependencies Status](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin/dev-status.svg)](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin?type=dev)
+[![Coverage Status](https://coveralls.io/repos/github/rbarilani/remove-source-map-url-webpack-plugin/badge.svg?branch=coveralls)](https://coveralls.io/github/rbarilani/remove-source-map-url-webpack-plugin?branch=coveralls)
 
 This is a webpack plugin that removes `# sourceMappingURL` after compilation.<br>
 It's a quick fix for wrong `# sourceMappingURL` comments left in vendor source code when compiling without minification (causing 404 responses from the server).
@@ -65,6 +66,7 @@ You're free to contribute to this project by submitting issues and/or pull reque
 * `npm run test:coverage` - run test suite and generate coverage reports
 * `npm run test:build` - build the test mock project with webpack-cli
 * `npm run format` - format code following project conventions
+* `npm run coveralls` - send coverage report to https://coveralls.io
 
 ## License
 
