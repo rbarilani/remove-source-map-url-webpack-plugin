@@ -1,6 +1,6 @@
 {
   "name": "@rbarilani/remove-source-map-url-webpack-plugin",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha",
   "description": "Remove source map url comments webpack plugin",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   "devDependencies": {
     "jest": "^26.6.1",
     "prettier": "^2.1.2",
-    "webpack": "^4.44.2",
+    "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0"
   }
 }
