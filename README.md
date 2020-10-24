@@ -12,10 +12,22 @@ It's a quick fix for wrong `# sourceMappingURL` comments left in vendor source c
 
 ## Install 
 
-Install the plugin via npm:
+Install the plugin via npm, you need to pick the right version **based on the webpack version** used in your project.
+
+**Webpack 4**
+
+With webpack 4 install 0.x version of the plugin.
 
 ```bash
-$ npm install @rbarilani/remove-source-map-url-webpack-plugin --save-dev
+$ npm install @rbarilani/remove-source-map-url-webpack-plugin@0.x --save-dev
+```
+
+**Webpack 5**
+
+With webpack 5 install next version of the plugin.
+
+```bash
+$ npm install @rbarilani/remove-source-map-url-webpack-plugin@next --save-dev
 ```
 
 ## Usage
