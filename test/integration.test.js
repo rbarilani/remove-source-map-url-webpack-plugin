@@ -1,30 +1,53 @@
 const fs = require("fs");
-const test = require("ava");
 const webpack = require("webpack");
 const options = require("./mock-project/webpack.config.js");
+const RemoveSourceMapURLWebpackPlugin = require("../index");
 
-test.cb(
-    "Webpack compiles assets with remove source map plugin enabled",
-    (t) => {
+describe(`Webpack compiles assets`, () => {
+    it(`without the plugin, '# sourceMappingURL' comments are NOT removed`, async () => {
+        const { stats } = await executeWebpack({
+            ...options,
+            ...{
+                plugins: [],
+            },
+        });
+
+        stats
+            .toJson()
+            .assets.map((x) => x.name)
+            .filter((name) => name.endsWith(".js"))
+            .map((name) =>
+                fs.readFileSync(`${options.output.path}/${name}`, "utf-8")
+            )
+            .forEach((content) => {
+                expect(content.indexOf("sourceMappingURL") !== -1).toBeTruthy();
+            });
+    });
+
+    it(`with the plugin, '# sourceMappingURL' comments are removed`, async () => {
+        const { stats } = await executeWebpack(options);
+        stats
+            .toJson()
+            .assets.map((x) => x.name)
+            .filter((name) => name.endsWith(".js"))
+            .map((name) =>
+                fs.readFileSync(`${options.output.path}/${name}`, "utf-8")
+            )
+            .forEach((content) => {
+                expect(content.indexOf("sourceMappingURL") === -1).toBeTruthy();
+            });
+    });
+});
+
+function executeWebpack(options) {
+    return new Promise((resolve, reject) => {
         webpack(options, (err, stats) => {
             if (err) {
-                return t.end(err);
+                return reject(err);
             } else if (stats.hasErrors()) {
-                return t.end(stats.toString());
+                return reject(new Error(stats.toString()));
             }
-
-            stats
-                .toJson()
-                .assets.map((x) => x.name)
-                .filter((name) => name.endsWith(".js"))
-                .map((name) =>
-                    fs.readFileSync(`${options.output.path}/${name}`, "utf-8")
-                )
-                .forEach((content) => {
-                    t.true(content.indexOf("sourceMappingURL") === -1);
-                });
-
-            t.end();
+            return resolve({ stats });
         });
-    }
-);
+    });
+}

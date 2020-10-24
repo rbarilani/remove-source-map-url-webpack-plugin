@@ -14,7 +14,7 @@
 
 # -- Project -- #
 test/mock-project/dist
-
+coverage
 
 # -- Bower -- #
 *bower_components
