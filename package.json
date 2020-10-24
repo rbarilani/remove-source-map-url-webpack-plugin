@@ -4,7 +4,8 @@
   "description": "Remove source map url comments webpack plugin",
   "main": "index.js",
   "scripts": {
-    "test": "ava test/**/*.test.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "test:build": "webpack --config test/mock-project/webpack.config.js",
     "format": "prettier '**/*.js' --write"
   },
@@ -26,7 +27,7 @@
     "colors": "^1.1.2"
   },
   "devDependencies": {
-    "ava": "^3.13.0",
+    "jest": "^26.6.1",
     "prettier": "^2.1.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.1.0"
