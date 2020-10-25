@@ -18,7 +18,6 @@ RemoveSourceMapURLWebpackPlugin.prototype.testFile = function (file) {
   }
 
   if (typeof this.options.test === "function") {
-    console.log("khkhhs");
     return this.options.test(file);
   }
 

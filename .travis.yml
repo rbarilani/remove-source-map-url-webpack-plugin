@@ -4,4 +4,7 @@ node_js:
 script:
   - npm run test:coverage -- --verbose
 after_script:
+  - echo "------------------------------"
+  - cat coverage/coverage-final.json
+  - echo "------------------------------"
   - npm run coveralls
