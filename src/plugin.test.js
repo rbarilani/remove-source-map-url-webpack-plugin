@@ -15,17 +15,7 @@ describe("RemoveSourceMapURLWebpackPlugin#testFile", () => {
     ],
   ];
 
-  cases.forEach(([options, expectedToMatch]) => {
-    it(`should return true for file that must be processed, user options: ${options}`, () => {
-      const plugin = new RemoveSourceMapURLWebpackPlugin(options);
-      const matched = files.filter((file) => plugin.testFile(file));
-
-      expect(matched.length).toEqual(expectedToMatch.length);
-      expect(matched).toEqual(expectedToMatch);
-    });
-  });
-
-  /*test.each(cases)(
+  test.each(cases)(
     "should return true for file that must be processed, user options: %o",
     (options, expectedToMatch) => {
       const plugin = new RemoveSourceMapURLWebpackPlugin(options);
@@ -34,7 +24,7 @@ describe("RemoveSourceMapURLWebpackPlugin#testFile", () => {
       expect(matched.length).toEqual(expectedToMatch.length);
       expect(matched).toEqual(expectedToMatch);
     }
-  );*/
+  );
 
   it("should throw if user's test option is invalid", () => {
     const plugin = new RemoveSourceMapURLWebpackPlugin({test: 333});
