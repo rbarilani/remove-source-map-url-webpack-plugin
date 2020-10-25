@@ -40,18 +40,18 @@ class RemoveSourceMapURLWebpackPlugin {
 
   processAssets(assets) {
     return Object.keys(assets)
-    .filter((file) => this.testFile(file))
-    .map((file) => {
-      const asset = assets[file];
-      const source = asset
-        .source()
-        .replace(/# sourceMappingURL=(.+?\.map)/g, "# $1");
+      .filter((file) => this.testFile(file))
+      .map((file) => {
+        const asset = assets[file];
+        const source = asset
+          .source()
+          .replace(/# sourceMappingURL=(.+?\.map)/g, "# $1");
 
-      return {
-        file,
-        source: new sources.RawSource(source),
-      };
-    });
+        return {
+          file,
+          source: new sources.RawSource(source),
+        };
+      });
   }
 
   testFile(file) {
