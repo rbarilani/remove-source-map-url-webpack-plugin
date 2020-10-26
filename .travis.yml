@@ -3,6 +3,7 @@ node_js:
   - 12
   - 14
 script:
+  - npm run lint
   - npm run test:coverage -- --verbose
 after_script:
   - npm run coveralls
