@@ -65,6 +65,8 @@ You're free to contribute to this project by submitting issues and/or pull reque
 * `npm test` - run test suite
 * `npm run test:coverage` - run test suite and generate coverage reports
 * `npm run test:build` - build the test mock project with webpack-cli
+* `npm run lint` - lint the code base with eslint
+* `npm run lint:fix` - try to fix as many linting issues as possible (the command will also format the code)
 * `npm run format` - format code following project conventions
 * `npm run coveralls` - send coverage report to https://coveralls.io
 
