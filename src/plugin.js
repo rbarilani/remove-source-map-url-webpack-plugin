@@ -1,5 +1,3 @@
-"use strict";
-
 const { sources, Compilation } = require("webpack");
 const colors = require("colors/safe");
 
@@ -19,10 +17,10 @@ class RemoveSourceMapURLWebpackPlugin {
         (assets) => {
           // process assets
           const count = this.processAssets(assets).reduce(
-            (count, { file, source }) => {
+            (acc, { file, source }) => {
               // update asset for the current compilation
               compilation.updateAsset(file, source);
-              return count + 1;
+              return acc + 1;
             },
             0
           );
