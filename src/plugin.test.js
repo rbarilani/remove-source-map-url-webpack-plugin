@@ -9,9 +9,7 @@ describe("RemoveSourceMapURLWebpackPlugin#testFile", () => {
     [
       "function",
       {
-        test: (file) => {
-          return file === "main.js" || file === "bar.js";
-        },
+        test: (file) => ["main.js", "bar.js"].includes(file),
       },
       ["main.js", "bar.js"],
     ],
