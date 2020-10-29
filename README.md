@@ -25,10 +25,10 @@ $ npm install @rbarilani/remove-source-map-url-webpack-plugin@0.x --save-dev
 
 **Webpack 5**
 
-For webpack 5 install the next version
+For webpack 5 install the latest version
 
 ```bash
-$ npm install @rbarilani/remove-source-map-url-webpack-plugin@next --save-dev
+$ npm install @rbarilani/remove-source-map-url-webpack-plugin@latest --save-dev
 ```
 
 ## Usage
