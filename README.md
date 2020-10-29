@@ -2,9 +2,9 @@ Remove Source Map Url Webpack Plugin
 ====================================
 
 ![npm](https://img.shields.io/npm/dw/@rbarilani/remove-source-map-url-webpack-plugin)
-[![Build Status](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin.svg?branch=master)](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin)
 [![dependencies Status](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin/status.svg)](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin)
 [![devDependencies Status](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin/dev-status.svg)](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin?type=dev)
+[![Build Status](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin.svg?branch=master)](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin)
 [![Coverage Status](https://coveralls.io/repos/github/rbarilani/remove-source-map-url-webpack-plugin/badge.svg?branch=master)](https://coveralls.io/github/rbarilani/remove-source-map-url-webpack-plugin?branch=master)
 
 This is a webpack plugin that removes `# sourceMappingURL` after compilation.<br>
@@ -13,11 +13,11 @@ It's a quick fix for wrong `# sourceMappingURL` comments left in vendor source c
 
 ## Install 
 
-Install the plugin via npm, you need to pick the right version **based on the webpack version** used in your project.
+You can install the plugin via npm or yarn, pick the right version **based on the webpack version** used in your project.
 
 **Webpack 4**
 
-With webpack 4 install 0.x version of the plugin.
+For webpack 4 install the 0.x version
 
 ```bash
 $ npm install @rbarilani/remove-source-map-url-webpack-plugin@0.x --save-dev
@@ -25,7 +25,7 @@ $ npm install @rbarilani/remove-source-map-url-webpack-plugin@0.x --save-dev
 
 **Webpack 5**
 
-With webpack 5 install next version of the plugin.
+For webpack 5 install the next version
 
 ```bash
 $ npm install @rbarilani/remove-source-map-url-webpack-plugin@next --save-dev
@@ -51,12 +51,15 @@ var webpackConfig = {
 
 ## Configuration
 
-* `test`: A condition that must be met. A condition may be a RegExp (tested against absolute asset key), a string containing the key, a function(key): bool.<br>
-*(default: `/\.js($|\?)/i`)*
+* `test`: A condition that must be met to include or exclude the assets that should be processed (*default*: `/\.js($|\?)/i`). The allowed types for a condition are:
+    * `String` - A string for exact matching with the asset key
+    * `RegExp` - A regular expression which will be tested against the asset key
+    * `Function(key:string):bool` - A function that will be invoked with the asset key as the argument and must return `true` to include the asset or `false` to exclude it
+
 
 ## Contributing
 
-You're free to contribute to this project by submitting issues and/or pull requests.
+You're are welcome to contribute to this project by submitting issues and/or pull requests.
 
 ## Development
 
