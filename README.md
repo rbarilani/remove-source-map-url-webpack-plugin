@@ -1,7 +1,8 @@
 Remove Source Map Url Webpack Plugin
 ====================================
 
-![npm](https://img.shields.io/npm/dw/@rbarilani/remove-source-map-url-webpack-plugin)
+![npm latest version](https://img.shields.io/npm/v/@rbarilani/remove-source-map-url-webpack-plugin)
+![npm downloads](https://img.shields.io/npm/dm/@rbarilani/remove-source-map-url-webpack-plugin?style=plastic)
 [![dependencies Status](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin/status.svg)](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin)
 [![devDependencies Status](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin/dev-status.svg)](https://david-dm.org/rbarilani/remove-source-map-url-webpack-plugin?type=dev)
 [![Build Status](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin.svg?branch=master)](https://travis-ci.com/rbarilani/remove-source-map-url-webpack-plugin)
