@@ -1,33 +1,36 @@
 const RemoveSourceMapURLWebpackPlugin = require("../index");
 
-describe("RemoveSourceMapURLWebpackPlugin#testFile", () => {
-  const files = ["main.js", "foo.js", "bar.js", "john.svg"];
-  const cases = [
-    ["defaults", undefined, ["main.js", "foo.js", "bar.js"]],
-    ["regexp", { test: /\.svg($|\?)/i }, ["john.svg"]],
-    ["string", { test: "main.js" }, ["main.js"]],
-    [
-      "function",
-      {
-        test: (file) => ["main.js", "bar.js"].includes(file),
-      },
-      ["main.js", "bar.js"],
-    ],
-  ];
+describe("RemoveSourceMapURLWebpackPlugin", () => {
+  describe("testFileName", () => {
+    const fileNames = ["main.js", "foo.js", "bar.js", "john.svg"];
+    const cases = [
+      ["defaults", undefined, ["main.js", "foo.js", "bar.js"]],
+      ["regexp", { test: /\.svg($|\?)/i }, ["john.svg"]],
+      ["string", { test: "main.js" }, ["main.js"]],
+      [
+        "function",
+        {
+          test: (fileName) => ["main.js", "bar.js"].includes(fileName),
+        },
+        ["main.js", "bar.js"],
+      ],
+    ];
 
-  test.each(cases)(
-    "should allow filtering assets based on provided user's options, using %s, user's options: %o",
-    (_, options, expectedToMatch) => {
-      const plugin = new RemoveSourceMapURLWebpackPlugin(options);
-      const matched = files.filter((file) => plugin.testFile(file));
+    test.each(cases)(
+      "should allow filtering assets based on provided user's options, using %s, user's options: %o",
+      (_, options, expected) => {
+        const plugin = new RemoveSourceMapURLWebpackPlugin(options);
+        const actual = fileNames.filter((fileName) =>
+          plugin.testFileName(fileName)
+        );
 
-      expect(matched.length).toEqual(expectedToMatch.length);
-      expect(matched).toEqual(expectedToMatch);
-    }
-  );
+        expect(actual).toEqual(expected);
+      }
+    );
 
-  it("should throw if user's test option is invalid", () => {
-    const plugin = new RemoveSourceMapURLWebpackPlugin({ test: 333 });
-    expect(() => plugin.testFile("do-not-matter")).toThrow();
+    it("should throw if user's test option is invalid", () => {
+      const plugin = new RemoveSourceMapURLWebpackPlugin({ test: 333 });
+      expect(() => plugin.testFileName("do-not-matter")).toThrow();
+    });
   });
 });

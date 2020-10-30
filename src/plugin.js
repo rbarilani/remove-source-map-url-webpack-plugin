@@ -17,9 +17,9 @@ class RemoveSourceMapURLWebpackPlugin {
         (assets) => {
           // process assets
           const count = this.processAssets(assets).reduce(
-            (acc, { file, source }) => {
+            (acc, { filename, source }) => {
               // update asset for the current compilation
-              compilation.updateAsset(file, source);
+              compilation.updateAsset(filename, source);
               return acc + 1;
             },
             0
@@ -38,31 +38,31 @@ class RemoveSourceMapURLWebpackPlugin {
 
   processAssets(assets) {
     return Object.keys(assets)
-      .filter((file) => this.testFile(file))
-      .map((file) => {
-        const asset = assets[file];
+      .filter((filename) => this.testFileName(filename))
+      .map((filename) => {
+        const asset = assets[filename];
         const source = asset
           .source()
           .replace(/# sourceMappingURL=(.+?\.map)/g, "# $1");
 
         return {
-          file,
+          filename,
           source: new sources.RawSource(source),
         };
       });
   }
 
-  testFile(file) {
+  testFileName(filename) {
     if (this.options.test instanceof RegExp) {
-      return this.options.test.test(file);
+      return this.options.test.test(filename);
     }
 
     if (typeof this.options.test === "string") {
-      return this.options.test === file;
+      return this.options.test === filename;
     }
 
     if (typeof this.options.test === "function") {
-      return this.options.test(file);
+      return this.options.test(filename);
     }
 
     throw new Error(
