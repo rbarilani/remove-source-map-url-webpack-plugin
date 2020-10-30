@@ -13,14 +13,14 @@ describe(`Webpack compiles assets`, () => {
     const { stats } = await runWebpack(options);
 
     readFilesFromStats(stats, options).forEach((content) => {
-      expect(content.indexOf("sourceMappingURL") !== -1).toBeTruthy();
+      expect(content).toContain("sourceMappingURL");
     });
   });
 
   it(`with the plugin, '# sourceMappingURL' comments are removed`, async () => {
     const { stats } = await runWebpack(DEFAULT_WEBPACK_CONFIG);
     readFilesFromStats(stats, DEFAULT_WEBPACK_CONFIG).forEach((content) => {
-      expect(content.indexOf("sourceMappingURL") === -1).toBeTruthy();
+      expect(content).not.toContain("sourceMappingURL");
     });
   });
 });
