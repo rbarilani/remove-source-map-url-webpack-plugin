@@ -50,12 +50,12 @@ var webpackConfig = {
 };
 ```
 
-## Configuration
+## Options
 
 * `test`: A condition that must be met to include or exclude the assets that should be processed (*default*: `/\.js($|\?)/i`). The allowed types for a condition are:
-    * `String` - A string for exact matching with the asset key
-    * `RegExp` - A regular expression which will be tested against the asset key
-    * `Function(key:string):bool` - A function that will be invoked with the asset key as the argument and must return `true` to include the asset or `false` to exclude it
+    * `String` - A string for exact matching with the file name of the asset
+    * `RegExp` - A regular expression which will be tested against the file name of the asset
+    * `Function(fileName:string):bool` - A function that will be invoked with the file name of the asset as the argument and must return `true` to include the asset or `false` to exclude it
 
 
 ## Contributing
